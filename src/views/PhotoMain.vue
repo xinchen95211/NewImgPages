@@ -255,7 +255,7 @@ export default {
   //数据监听
   watch:{
     tableName(){this.imgListLoad()},
-    // search(){this.imgListLoad()},
+    search(){this.imgListLoad()},
     currentPage(){this.imgListLoad()},
   }
 
