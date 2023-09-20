@@ -45,7 +45,7 @@ export default {
   },
   methods:{
     mount(id){
-      axios.get("https://frp-oak.top:14850/photo/" + id).then(res => {
+      axios.get("https://vernelproxy.dynv6.net/proxy/frp-oak.top:14850/photo/" + id).then(res => {
         this.nameS = res.data.name;
         this.prefix = res.data.prefix;
         this.suffix = res.data.suffix;
