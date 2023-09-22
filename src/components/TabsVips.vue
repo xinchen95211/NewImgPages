@@ -1,7 +1,11 @@
 <template>
-  <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd">
+  <nav class="navbar navbar-expand-lg" :class="isDark ? ' ':'lights'">
     <div class="container-fluid">
       <a class="navbar-brand" @click="handleSelect('Aiyouwu')">Navbar</a>
+      <div @click="toggleDark" class="navbar-toggler">
+        <div v-if="isDark" ><el-icon size="30"  color="green"><Moon /></el-icon></div>
+        <div v-if="!isDark" ><el-icon size="30"  ><Sunny /></el-icon></div>
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -58,12 +62,18 @@
             </ul>
           </li>
         </ul>
-        <div class="d-flex" role="search" @click="sc">
+        <div @click="toggleDark" class="hidden-md-and-down">
+          <div v-if="isDark" ><el-icon size="25"  color="green"><Moon /></el-icon></div>
+          <div v-if="!isDark" ><el-icon size="25"  ><Sunny /></el-icon></div>
+        </div>
+        <div class="d-flex" role="search" >
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="inputText">
           <button class="btn btn-outline-success" @click="handleSearch" >Search</button>
         </div>
       </div>
+
     </div>
+
   </nav>
 
 
@@ -92,8 +102,24 @@ export default {
     handleSearch(){
       this.$emit("handleSearch",this.inputText)
     },
-    sc(){
-      console.log(123)
+    toggleDark(){
+      this.$emit("toggleDark")
+    }
+
+  },
+  props:{
+    isDark:Boolean
+  },
+  watch:{
+    isDark(){
+      const html = document.querySelector('nav')
+      if (html) {
+        if (this.isDark) {
+          html.setAttribute("data-bs-theme","dark")
+        } else {
+          html.removeAttribute("data-bs-theme")
+        }
+      }
     }
   }
 }
@@ -103,4 +129,11 @@ export default {
 .flex-grow {
   flex-grow: 1;
 }
+.lights{
+  background-color: #e3f2fd;
+}
+
+
+
+
 </style>

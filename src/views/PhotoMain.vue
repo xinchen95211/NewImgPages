@@ -1,9 +1,9 @@
 <template>
 
-  <div class="common-layout">
+  <div class="common-layout ">
 
-    <el-container>
-     <tabs-vips @handleSelect="handleSelect" @handleSearch="handleSearch"></tabs-vips>
+    <el-container :class="isDark ? 'darks':''" >
+     <tabs-vips @handleSelect="handleSelect" @handleSearch="handleSearch" @toggleDark="toggleDark" :is-dark="isDark"></tabs-vips>
       <el-main><photo-card ref="photoCard" :imglist="imgList" @selectItem="selectItem" ></photo-card></el-main>
       <el-footer class="centers"> <paglina-tion :totalCount="totalCount" :currentPage="currentPage" @pageTurning="pageTurning"></paglina-tion></el-footer>
     </el-container>
@@ -207,7 +207,9 @@ export default {
 
       //总数据
       totalCount: 2162,
-      loading:[]
+      loading:[],
+      //暗黑模式
+      isDark:false
     }
   },
   methods:{
@@ -244,6 +246,19 @@ export default {
     handleSearch(e){
       this.currentPage = 1;
       this.search = e
+    },
+    toggleDark(){
+      this.isDark = !this.isDark
+      const html = document.querySelector('html')
+      if (html) {
+        if (this.isDark) {
+          html.classList.remove("light");
+          html.classList.add("dark");
+        } else {
+          html.classList.remove("dark");
+          html.classList.add("light");
+        }
+      }
     }
   },
 
@@ -252,6 +267,7 @@ export default {
     TabsVips,
     PaglinaTion
   },
+
   //数据监听
   watch:{
     tableName(){this.imgListLoad()},
@@ -266,7 +282,6 @@ export default {
 .centers{
   margin: 0 auto;
 }
-
 .darks{
   background-color: black;
 }

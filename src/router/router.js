@@ -2,6 +2,7 @@ import {createRouter,   createWebHashHistory} from 'vue-router'
 
 import PhotoMain from '@/views/PhotoMain.vue'
 import PhotoShow from '@/views/PhotoShow.vue'
+import VideoShow from "@/views/VideoShow";
 
 const router = createRouter({
     history:createWebHashHistory(),
@@ -14,6 +15,10 @@ const router = createRouter({
             path: "/show/:id",
             component: PhotoShow,
             props:true
+        },
+        {
+            path:"/video/show",
+            component:VideoShow
         }
     ]
 })

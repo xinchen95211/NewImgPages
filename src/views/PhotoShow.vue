@@ -26,7 +26,6 @@
 </template>
 
 <script>
-// import Photo from '@/assets/10010.json'
 import axios from "axios";
 export default {
   name: "PhotoShow",
