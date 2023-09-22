@@ -45,22 +45,52 @@ export default {
     this.mount(this.id);
     let item = localStorage.getItem("isDark");
     this.isDark = (item === "0");
+
+
+    const html = document.querySelector('html')
+    if (html) {
+      if (this.isDark) {
+        html.classList.remove("light");
+        html.classList.add("dark");
+      } else {
+        html.classList.remove("dark");
+        html.classList.add("light");
+      }
+    }
   },
   methods:{
     mount(id){
-      axios.get("https://vernelproxy.dynv6.net/proxy/frp-oak.top:14850/photo/" + id).then(res => {
-        this.nameS = res.data.name;
-        this.prefix = res.data.prefix;
-        this.suffix = res.data.suffix;
-        res.data.collection.forEach(item => {
+      let res = localStorage.getItem(id);
+      if (res == null){
+          axios.get("https://vernelproxy.dynv6.net/proxy/frp-oak.top:14850/photo/" + id).then(res => {
+            let s = JSON.stringify( {
+              "name":res.data.name,
+              "prefix":res.data.prefix,
+              "suffix":res.data.suffix,
+              "collection":res.data.collection
+            });
+            localStorage.setItem(id,s)
+            this.nameS = res.data.name;
+            this.prefix = res.data.prefix;
+            this.suffix = res.data.suffix;
+            res.data.collection.forEach(item => {
+              this.imgList.push(this.prefix + this.suffix + '/' + item)
+            })
+          }).catch(error => {
+                console.log("error" + error)
+              }
+          )
+      }else {
+        let resf = JSON.parse(res);
+
+        this.nameS = resf.name;
+        this.prefix = resf.prefix;
+        this.suffix = resf.suffix;
+        resf.collection.forEach(item => {
           this.imgList.push(this.prefix + this.suffix + '/' + item)
         })
-      }).catch(error => {
-            console.log("error" + error)
-          }
-      )
-      console.log(id)
-    }
+      }
+      }
   },
   props:{
     id:String
