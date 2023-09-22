@@ -13,12 +13,14 @@ import router from './router/router.js'
 
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+import IndexDB from "@/utils/indexDB";
 
 let elementApp = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     elementApp.component(key, component)
 }
 elementApp
+    .use(IndexDB)
     .use(router)
     .use(ElementPlus)
     .use(vue3videoPlay)
