@@ -90,6 +90,7 @@ export default {
     }
   },
   created() {
+    this.openDark();
   },
   methods:{
     handleSelect(item){
@@ -104,14 +105,8 @@ export default {
     },
     toggleDark(){
       this.$emit("toggleDark")
-    }
-
-  },
-  props:{
-    isDark:Boolean
-  },
-  watch:{
-    isDark(){
+    },
+    openDark(){
       const html = document.querySelector('nav')
       if (html) {
         if (this.isDark) {
@@ -120,6 +115,15 @@ export default {
           html.removeAttribute("data-bs-theme")
         }
       }
+    }
+
+  },
+  props:{
+    isDark:Boolean
+  },
+  watch:{
+    isDark(){
+      this.openDark();
     }
   }
 }
