@@ -209,7 +209,17 @@ export default {
       totalCount: 2162,
       loading:[],
       //暗黑模式
-      isDark:false
+      isDark:null
+    }
+  },
+  created() {
+    //0为false 1 为 ture
+    let item = localStorage.getItem("isDark");
+    if (item == null){
+      localStorage.setItem("isDark","0")
+      this.isDark = false
+    }else {
+      this.isDark = (item === "0");
     }
   },
   methods:{
@@ -249,14 +259,18 @@ export default {
     },
     toggleDark(){
       this.isDark = !this.isDark
+    },
+    openDark(){
       const html = document.querySelector('html')
       if (html) {
         if (this.isDark) {
           html.classList.remove("light");
           html.classList.add("dark");
+          localStorage.setItem("isDark","0")
         } else {
           html.classList.remove("dark");
           html.classList.add("light");
+          localStorage.setItem("isDark","1")
         }
       }
     }
@@ -270,6 +284,7 @@ export default {
 
   //数据监听
   watch:{
+    isDark(){this.openDark()},
     tableName(){this.imgListLoad()},
     search(){this.imgListLoad()},
     currentPage(){this.imgListLoad()},
