@@ -1,5 +1,5 @@
 <template>
-
+<div :class="isDark ? 'darks':''">
   <el-row :gutter="5" >
     <div class="centers"><h3>{{nameS}}</h3></div>
 
@@ -23,6 +23,7 @@
 
     </el-col>
   </el-row>
+</div>
 </template>
 
 <script>
@@ -36,11 +37,14 @@ export default {
       prefix: "",
       suffix: "",
       collection:[],
-      imgList:[]
+      imgList:[],
+      isDark:false
     }
   },
   created() {
     this.mount(this.id);
+    let item = localStorage.getItem("isDark");
+    this.isDark = (item === "0");
   },
   methods:{
     mount(id){
@@ -72,5 +76,9 @@ export default {
 }
 .centers{
   margin: 0 auto;
+}
+.darks{
+  color: pink;
+  background-color: black;
 }
 </style>
