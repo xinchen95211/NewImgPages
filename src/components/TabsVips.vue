@@ -90,7 +90,10 @@ export default {
     }
   },
   created() {
-    this.openDark();
+
+  },
+  mounted(){
+    this.openDark()
   },
   methods:{
     handleSelect(item){

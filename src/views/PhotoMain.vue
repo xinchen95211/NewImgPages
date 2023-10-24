@@ -230,7 +230,7 @@ export default {
     imgListLoad(){
       this.imgList = []
       this.$refs.photoCard.clearLoading();
-      axios.post("https://vernelproxy.dynv6.net/proxy/frp-oak.top:14850/photo", {
+      axios.post("https://vernelproxy.dynv6.net/proxy/frp-hat.top:49728/photo", {
         "tables": this.tableName,
         "search": this.search,
         "row": this.currentPage

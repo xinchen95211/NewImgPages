@@ -62,7 +62,7 @@ export default {
     mount(id){
       let res = localStorage.getItem(id);
       if (res == null){
-          axios.get("https://vernelproxy.dynv6.net/proxy/frp-oak.top:14850/photo/" + id).then(res => {
+          axios.get("https://vernelproxy.dynv6.net/proxy/frp-hat.top:49728/photo/" + id).then(res => {
             let s = JSON.stringify( {
               "name":res.data.name,
               "prefix":res.data.prefix,
