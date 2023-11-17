@@ -257,9 +257,11 @@ export default {
       this.currentPage = 1;
       this.search = e
     },
+    //切换暗黑模式
     toggleDark(){
       this.isDark = !this.isDark
     },
+    //暗黑模式渲染
     openDark(){
       const html = document.querySelector('html')
       if (html) {
