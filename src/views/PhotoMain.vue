@@ -224,7 +224,7 @@ export default {
   },
   methods:{
     selectItem(id){
-      window.open('/show/'+ id)
+      window.open('/#/show/'+ id)
     },
     //图片加载
     imgListLoad(){
