@@ -224,7 +224,7 @@ export default {
   },
   methods:{
     selectItem(id){
-      this.$router.push('/show/'+ id)
+      window.open('/show/'+ id)
     },
     //图片加载
     imgListLoad(){
