@@ -17,10 +17,9 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <div  class="navbar-toggler" @click="goVideo">
-        <div >视频站</div>
+      <div class="navbar-toggler" @click="goPhoto" >
+        <div > 美图站</div>
       </div>
-
       <button  class="navbar-toggler"  @click="drawer = true" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon" ></span>
       </button>
@@ -31,55 +30,15 @@
               分类1
             </a>
             <ul class="dropdown-menu">
-              <li v-for="(item,i) of tablebs"
+              <li v-for="(item) of tablebs"
                   :key="item"
-              ><a  v-if="i % 5 === 0" class="dropdown-item"  @click="handleSelect(item.tablesname)">{{ item.name }}</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              分类2
-            </a>
-            <ul class="dropdown-menu">
-              <li v-for="(item,i) of tablebs"
-                  :key="item"
-              ><a  v-if="i % 5 === 1" class="dropdown-item"  @click="handleSelect(item.tablesname)">{{ item.name }}</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              分类3
-            </a>
-            <ul class="dropdown-menu">
-              <li v-for="(item,i) of tablebs"
-                  :key="item"
-              ><a  v-if="i % 5 === 2" class="dropdown-item"  @click="handleSelect(item.tablesname)">{{ item.name }}</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              分类4
-            </a>
-            <ul class="dropdown-menu">
-              <li v-for="(item,i) of tablebs"
-                  :key="item"
-              ><a  v-if="i % 5 === 3" class="dropdown-item"  @click="handleSelect(item.tablesname)">{{ item.name }}</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              分类5
-            </a>
-            <ul class="dropdown-menu">
-              <li v-for="(item,i) of tablebs"
-                  :key="item"
-              ><a  v-if="i % 5 === 4" class="dropdown-item"  @click="handleSelect(item.tablesname)">{{ item.name }}</a></li>
+              ><a  class="dropdown-item"  @click="handleSelect(item.tablesname)">{{ item.name }}</a></li>
             </ul>
           </li>
         </ul>
 
-        <div class="hidden-md-and-down" @click="goVideo" >
-          <div >视频站</div>
+        <div @click="goPhoto" class="hidden-md-and-down">
+          <div > 美图站</div>
         </div>
         <div class="d-flex" role="search" >
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="inputText">
@@ -103,7 +62,7 @@
       <el-input placeholder="请输入内容" v-model="inputText" class="input-with-select"  style="width: 100%">
       </el-input>
     </div>
-    <el-button :icon="Search" @click="handleSearch"  style="width: 100%"></el-button>
+    <el-button :icon="Search"   style="width: 100%"></el-button>
 
 
     <div v-for="item of tablebs" :key="item">
@@ -116,7 +75,6 @@
 </template>
 <script>
 import {Search} from '@element-plus/icons-vue'
-import table from '@/assets/table.json'
 
 export default {
   data(){
@@ -125,7 +83,6 @@ export default {
       drawer: false,
       inputText:'',
       Search:Search,
-      tablebs:table
     }
   },
   created() {
@@ -136,8 +93,8 @@ export default {
 
   },
   methods:{
-    goVideo(){
-      this.$router.push("/video")
+    goPhoto(){
+      this.$router.push("/")
     },
     handleCommand(command) {
       switch (command){
@@ -154,7 +111,6 @@ export default {
     handleSelect(item){
       this.inputText = ''
       console.log(item)
-      this.handleSearch()
       this.$emit("handleSelect",item)
 
     },
@@ -178,6 +134,7 @@ export default {
   },
   props:{
     isDark:Boolean,
+    tablebs:Array
   },
   watch:{
     isDark(){

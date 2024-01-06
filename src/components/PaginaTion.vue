@@ -1,6 +1,7 @@
 <template>
 
   <el-pagination
+      style="height: 3vh"
       :page-size="24"
       :pager-count=pagerCount
       background layout="prev, pager, next"
@@ -8,7 +9,7 @@
       :current-page="currentPage"
       :hide-on-single-page="totalCount <= 24"
       @update:current-page="pageTurning"
-
+      :small="true"
   />
 </template>
 
