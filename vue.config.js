@@ -4,7 +4,7 @@ module.exports = defineConfig({
   devServer: {
     proxy: {
       '/api': {
-        target: 'https://frp-hat.top:49728',
+        target: 'htto://localhost:8888',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
