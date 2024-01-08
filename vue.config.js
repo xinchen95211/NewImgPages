@@ -10,13 +10,6 @@ module.exports = defineConfig({
           '^/api': ''
         }
       },
-      '/dowenload': {
-        target: 'https://yaoyao.dynv6.net',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/dowenload': ''
-        }
-      },
     },
 
     client: {
