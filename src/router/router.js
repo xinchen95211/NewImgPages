@@ -4,6 +4,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 
 const router = createRouter({
     history:createWebHistory(),
+    mode:'hash',
     routes: [
         {
             path:"/videoshow/:id",
