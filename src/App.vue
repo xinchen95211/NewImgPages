@@ -29,6 +29,7 @@ export default {
     }
   },
   created() {
+    localStorage.setItem("token","s")
     if (localStorage.getItem("token") != null){
       if (checkToken()){
         if (window.location.href.includes("login")){
@@ -42,6 +43,7 @@ export default {
      localStorage.setItem("uuid",this.$uuid.v4())
    }
   },
+
   methods:{
     reload(){
       this.routerHide = false;
