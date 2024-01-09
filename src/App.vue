@@ -29,13 +29,15 @@ export default {
     }
   },
   created() {
-    localStorage.setItem("token","s")
+
     if (localStorage.getItem("token") != null){
       if (checkToken()){
         if (window.location.href.includes("login")){
           this.$router.push("/")
         }
       }
+    }else {
+      localStorage.setItem("token","s")
     }
 
    let uuid = localStorage.getItem("uuid");
