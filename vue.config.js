@@ -1,4 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
+const SetPublicPath = require("@vue/cli-service/lib/commands/build/setPublicPath");
+
+
 module.exports = defineConfig({
   transpileDependencies: false,
   devServer: {
@@ -11,7 +14,6 @@ module.exports = defineConfig({
         }
       },
     },
-
     client: {
       //当出现编译错误或警告时，在浏览器中是否显示全屏覆盖。  示例为只显示错误信息
       overlay: {
@@ -20,6 +22,7 @@ module.exports = defineConfig({
     },
 
 
-  }
+  },
+  PublicPath:'./',
 })
 
