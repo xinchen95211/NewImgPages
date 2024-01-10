@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import RetrievePasswordComponents from "@/components/RetrievePasswordComponents";
+import RetrievePasswordComponents from "@/components/RetrievePasswordComponents.vue";
 export default {
   name: "RetrievePasswordView",
   components:{
