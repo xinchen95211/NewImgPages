@@ -26,17 +26,17 @@ const router = createRouter({
         {
             //登陆
             path:"/login",
-            component:import("@/views/LoginView"),
+            component:import("@/views/LoginView.vue"),
         },
         {
             //注册
             path:"/register",
-            component:import("@/views/RegisterView")
+            component:import("@/views/RegisterView.vue")
         },
         {
             //找回密码
             path:"/retrievePassword",
-            component:import("@/views/RetrievePasswordView")
+            component:import("@/views/RetrievePasswordView.vue")
         },
         {
             //找回密码
