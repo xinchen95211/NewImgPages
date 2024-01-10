@@ -36,8 +36,6 @@ export default {
           this.$router.push("/")
         }
       }
-    }else {
-      localStorage.setItem("token","s")
     }
 
    let uuid = localStorage.getItem("uuid");

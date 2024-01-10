@@ -22,13 +22,7 @@ let elementApp = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     elementApp.component(key, component)
 }
-elementApp
-    .use(VueUuid)
-    .use(IndexDB)
-    .use(router)
-    .use(ElementPlus)
-    .use(vue3videoPlay)
-    .mount('#app');
+
 
 
 // 请求拦截器
@@ -71,3 +65,10 @@ axios.interceptors.response.use(function(response){
     }
 )
 
+elementApp
+    .use(VueUuid)
+    .use(IndexDB)
+    .use(router)
+    .use(ElementPlus)
+    .use(vue3videoPlay)
+    .mount('#app');
