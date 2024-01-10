@@ -28,7 +28,7 @@
 
 <script>
 import PhotoCard from '@/components/PhotoCard.vue'
-import TabsVips from  '@/components/TabsVips'
+import TabsVips from  '@/components/TabsVips.vue'
 import axios from "axios";
 
 export default {
