@@ -3,6 +3,7 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: false,
   devServer: {
+    port:80,
     proxy: {
       '/api': {
         target: 'https://frp-hat.top:49728',
