@@ -18,8 +18,8 @@
 
 <script>
 import PhotoCard from '@/components/PhotoCard.vue'
-import TabsVips from  '@/components/TabsVips'
-import PaglinaTion from  '@/components/PaginaTion'
+import TabsVips from  '@/components/TabsVips.vue'
+import PaglinaTion from  '@/components/PaginaTion.vue'
 import axios from "axios";
 
 
