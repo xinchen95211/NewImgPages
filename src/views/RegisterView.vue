@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import RegisterComponents from "@/components/RegisterComponents";
+import RegisterComponents from "@/components/RegisterComponents.vue";
 export default {
   name: "RegisterView",
   components:{
