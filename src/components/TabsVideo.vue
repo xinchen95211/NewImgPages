@@ -57,8 +57,6 @@
       </el-input>
     </div>
 <!--    <el-button :icon="Search"   style="width: 100%"></el-button>-->
-
-
     <div v-for="item of tablebs" :key="item">
       <el-button @click="handleSelect(item.tablesname)" style="width: 100%">
         {{item.name}}
@@ -77,6 +75,7 @@ export default {
       drawer: false,
       inputText:'',
       Search:Search,
+      tablebs:[{"id":1,"tablesname":"/","name":"首页"},{"id":2,"tablesname":"like","name":"我喜欢"}],
     }
   },
   created() {
@@ -128,7 +127,6 @@ export default {
   },
   props:{
     isDark:Boolean,
-    tablebs:Array
   },
   watch:{
     isDark(){

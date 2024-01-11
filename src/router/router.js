@@ -7,10 +7,15 @@ import registerView from "@/views/RegisterView.vue";
 import RetrievePasswordView from "@/views/RetrievePasswordView.vue";
 import logoutView from "@/views/LogoutView.vue";
 import videoShow from "@/views/VideoShow.vue";
+import videoMain from "@/views/VideoMain.vue";
 
 const router = createRouter({
     history:createWebHistory(),
     routes: [
+        {
+          path:'/video',
+          component: videoMain,
+        },
         {
             path:"/videoshow/:id",
             component:videoShow,

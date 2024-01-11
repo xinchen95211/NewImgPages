@@ -1,7 +1,7 @@
 <template>
   <div :class="isDark ? 'darks':''" >
     <div :style="{ height: tabHeight }">
-      <tabs-video @handleSelect="handleSelect" @handleSearch="handleSearch" @toggleDark="toggleDark" :tablebs="table" :is-dark="isDark"></tabs-video>
+      <tabs-video @handleSelect="handleSelect" @handleSearch="handleSearch" @toggleDark="toggleDark" :is-dark="isDark"></tabs-video>
       <div class="centers">
         <!--      <paglina-tion  :totalCount="totalCount" :currentPage="currentPage" @pageTurning="pageTurning"></paglina-tion>-->
         <div class="slider">
@@ -26,15 +26,9 @@
 import PhotoCard from '@/components/PhotoCard.vue'
 import TabsVideo from  '@/components/TabsVideo.vue'
 import axios from "axios";
-import table from "@/assets/video.json";
 
 export default {
   name: "PhotoMain",
-  computed: {
-    table() {
-      return table
-    }
-  },
   data() {
     return {
       cardHeight: '',
