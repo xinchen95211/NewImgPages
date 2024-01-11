@@ -1,5 +1,5 @@
 <template>
-  <a></a>
+  <a href="/logout"></a>
 </template>
 <script>
 import {ElMessage} from "element-plus";
