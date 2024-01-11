@@ -1,10 +1,8 @@
 <template>
-    <router-view v-if="routerHide"></router-view>
-
+  <router-view></router-view>
 </template>
 
 <script>
-
 import axios from "axios";
 
 const checkToken = async () => {
@@ -18,11 +16,6 @@ const checkToken = async () => {
 
 export default {
   name:'app',
-  provide(){
-    return{
-      reload:this.reload()
-    }
-  },
   data(){
     return{
       routerHide:true
@@ -38,20 +31,13 @@ export default {
       }
     }
 
-   let uuid = localStorage.getItem("uuid");
-   if (uuid == null){
-     localStorage.setItem("uuid",this.$uuid.v4())
-   }
+    let uuid = localStorage.getItem("uuid");
+    if (uuid == null){
+      localStorage.setItem("uuid",this.$uuid.v4())
+    }
   },
 
   methods:{
-    reload(){
-      this.routerHide = false;
-      this.$nextTick(() => {
-        this.routerHide = true;
-      }
-      )
-    },
     async checkToken(){
       try {
         const response = await axios.get(`/api/login/CheckToken`);
@@ -63,8 +49,9 @@ export default {
   }
 
 }
+
 </script>
 
-<style>
+<style scoped>
 
 </style>

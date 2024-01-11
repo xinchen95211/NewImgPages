@@ -1,53 +1,49 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
-
+import PhotoMain from '@/views/PhotoMain.vue'
+import PhotoShow from '@/views/PhotoShow.vue'
+import loginView from "@/views/LoginView.vue";
+import registerView from "@/views/RegisterView.vue";
+import RetrievePasswordView from "@/views/RetrievePasswordView.vue";
+import logoutView from "@/views/LogoutView.vue";
+import videoShow from "@/views/VideoShow.vue";
 
 const router = createRouter({
     history:createWebHistory(),
     routes: [
         {
             path:"/videoshow/:id",
-            component:import("@/views/VideoShow.vue"),
+            component:videoShow,
             props:true
         },
         {
-            path:"/video",
-            component:import("@/views/VideoMain.vue")
-        },
-        {
             path:'/',
-            component:import("@/views/PhotoMainCopy.vue")
+            component:PhotoMain
         },
         {
             path: "/show/:id",
-            component: import("@/views/PhotoShow.vue"),
+            component: PhotoShow,
             props:true
         },
         {
             //登陆
             path:"/login",
-            component:import("@/views/LoginView.vue"),
+            component:loginView,
         },
         {
             //注册
             path:"/register",
-            component:import("@/views/RegisterView.vue")
+            component:registerView,
         },
         {
             //找回密码
             path:"/retrievePassword",
-            component:import("@/views/RetrievePasswordView.vue")
-        },
-        {
-            //找回密码
-            path:"/error",
-            component:import("@/components/ErrorComponents.vue")
-            // component:import("@/components/AoTestCom.vue")
+            component:RetrievePasswordView
         },
         {
             //找回密码
             path:"/logout",
-            component:import("@/views/LogoutView.vue")
+            component:logoutView
         }
     ]
 })
@@ -55,7 +51,7 @@ const router = createRouter({
 router.beforeEach((to,from,next)=>{
     const token = localStorage.getItem("token");
     if(to.path === '/login' || to.path === '/register'|| to.path === '/retrievePassword'|| to.path === '/error'){
-            next();
+        next();
     }else{
         if(token == null || token === ''){
             next('/login');
@@ -64,7 +60,4 @@ router.beforeEach((to,from,next)=>{
         }
     }
 })
-
-
-
 export default router
